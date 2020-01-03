@@ -1,10 +1,10 @@
 # nuxt-project
 
-> My kickass Nuxt.js project
+> A Basic Project which deals with Pages , Layout , Components
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 
