@@ -1,27 +1,14 @@
 <template>
   <div>
-    <TheHeader @sideNavtoggle="displaySideNav = !displaySideNav" />
-    <TheSideNav :show="displaySideNav" @close="displaySideNav = false" />
+    <span class="home">
+      Back To
+      <a href="/">Home</a>
+    </span>
     <nuxt />
   </div>
 </template>
 
-<script>
-import TheHeader from "@/components/Navigation/TheHeader";
-import TheSideNav from "@/components/Navigation/TheSidenav";
 
-export default {
-  components: {
-    TheHeader,
-    TheSideNav
-  },
-  data() {
-    return {
-      displaySideNav: false
-    };
-  }
-};
-</script>
 
 <style>
 html {
@@ -69,5 +56,10 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.home {
+  position: absolute;
+  top: 24px;
+  left: 20px;
 }
 </style>
