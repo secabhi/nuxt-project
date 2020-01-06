@@ -1,8 +1,58 @@
 <template>
   <div class="post-page">
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <PostList :posts="loadedPosts" />
   </div>
 </template>
+
+<script>
+import PostList from "@/components/posts/PostList";
+export default {
+  components: {
+    PostList
+  },
+  asyncData(context) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          loadedPosts: [
+            {
+              id: "1",
+              title: "first post",
+              content: "this is content",
+              thumbnail:
+                "https://img.freepik.com/free-vector/abstract-blue-technology-particle-background_1017-17494.jpg?size=626&ext=jpg"
+            },
+            {
+              id: "2",
+              title: "first post 2",
+              content: "this is content 2",
+              thumbnail:
+                "https://img.freepik.com/free-vector/abstract-blue-technology-particle-background_1017-17494.jpg?size=626&ext=jpg"
+            },
+            {
+              id: "3",
+              title: "first post 3",
+              content: "this is content 3",
+              thumbnail:
+                "https://img.freepik.com/free-vector/abstract-blue-technology-particle-background_1017-17494.jpg?size=626&ext=jpg"
+            }
+          ]
+        });
+      }, 1000);
+    })
+      .then(data => {
+        return data;
+      })
+      .catch(e => {
+        context.error(e);
+      });
+  },
+  created() {
+    debugger;
+    this.$store.dispatch("setPosts", this.loadedPosts);
+  }
+};
+</script>
 
 <style scoped>
 .post-page {
